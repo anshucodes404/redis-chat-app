@@ -13,6 +13,17 @@ async function init(){
 
     socketService.initListeners();
 
+
+    // Health check endpoint
+    httpServer.on("request", (req, res) => {
+        if (req.url === "/health") {
+            res.writeHead(200, { "Content-Type": "application/json" });
+            res.end(JSON.stringify({ status: "ok" }));
+        }
+    });
+
+
+
     httpServer.listen(PORT, () => {
         console.log(`Server is running on http://localhost:${PORT}`);
     });
