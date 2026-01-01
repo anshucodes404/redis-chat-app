@@ -42,11 +42,11 @@ export default function page() {
         <input
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        onKeyDown={(e) => e.key === "Enter" && sendMessage(message, socket?.id ?? "")}
+        onKeyDown={(e) => e.key === "Enter" && (sendMessage(message, socket?.id ?? ""), setMessage(""))}
         className="border text-white border-gray-300 flex-1 rounded-md px-4 py-2 focus:outline-blue-500 focus:outline-2" type="text" placeholder="type message here..." />
 
         <button
-        onClick={() => sendMessage(message, socket?.id ?? "")}
+        onClick={() => (sendMessage(message, socket?.id ?? ""), setMessage(""))}
         className="bg-blue-600 px-4 py-2 text-white rounded-md">SEND</button>
       </div>
     </div>
